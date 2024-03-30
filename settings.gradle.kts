@@ -10,9 +10,11 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        gradlePluginPortal()
     }
 }
 
 rootProject.name = "CinePro"
 include(":app")
- 
+
+//FAIL_ON_PROJECT_REPOS

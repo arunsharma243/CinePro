@@ -4,7 +4,7 @@ import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-  // id("com.google.dagger.hilt.android")
+   id("com.google.dagger.hilt.android")
     id("kotlin-kapt")
 }
 
@@ -35,11 +35,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
@@ -50,13 +50,14 @@ android {
     packaging {
         resources {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "/META-INF/gradle/incremental.annotation.processors"
         }
     }
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.8.2")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
@@ -72,6 +73,11 @@ dependencies {
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
 
+implementation("androidx.lifecycle:lifecycle-viewmodel:2.7.0")
+
+    implementation("androidx.lifecycle:lifecycle-livedata:2.7.0")
+    implementation("androidx.lifecycle:lifecycle-common-java8:2.7.0")
+
     //Navigation
     implementation("androidx.navigation:navigation-compose:2.7.7")
 
@@ -81,8 +87,9 @@ dependencies {
     implementation("androidx.room:room-paging:2.6.1")
 
     //Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.48")
-   kapt("com.google.dagger:hilt-android:2.44")
+    implementation("com.google.dagger:hilt-android:2.49")
+  implementation("com.google.dagger:hilt-compiler:2.49")
+   kapt("com.google.dagger:hilt-android:2.49")
     kapt("androidx.hilt:hilt-compiler:1.2.0")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
@@ -90,14 +97,14 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("com.squareup.okhttp3:okhttp:4.11.0")
-    implementation("com.squareup.okhttp3:logging-intercepter:4.10.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.11.0")
 
     //Coil
     implementation("io.coil-kt:coil-compose:2.4.0")
 
-    //Exrended Icons
-    implementation("androidx.compose.material:material-icons-extended:1.6.2")
+    //Extended Icons
+    implementation("androidx.compose.material:material-icons-extended:1.6.3")
 
-//sysytem UI Controller
-    implementation("com.google.accompanist:accompanist-sysytemuicontroller:0.27.0")
+  //system UI Controller
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.27.0")
 }
