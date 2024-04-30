@@ -43,7 +43,7 @@ import coil.size.Size
 import com.example.cinepro.movieList.data.remote.MovieApi
 import com.example.cinepro.movieList.domain.model.Movie
 import com.example.cinepro.movieList.util.RatingBar
-import com.example.cinepro.movieList.util.Screen
+import com.example.cinepro.movieList.util.nvgraph.Screen
 import com.example.cinepro.movieList.util.getAverageColor
 
 

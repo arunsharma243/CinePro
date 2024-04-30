@@ -35,7 +35,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.cinepro.R
 import com.example.cinepro.movieList.presentation.MovieListUiEvent
 import com.example.cinepro.movieList.presentation.MovieListViewModel
-import com.example.cinepro.movieList.util.Screen
+import com.example.cinepro.movieList.util.nvgraph.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

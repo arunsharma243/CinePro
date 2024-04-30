@@ -3,7 +3,12 @@ package com.example.cinepro.di
 import android.app.Application
 import androidx.room.Room
 import com.example.cinepro.movieList.data.local.movie.MovieDatabase
+import com.example.cinepro.movieList.data.manager.LocalUserManagerImpl
 import com.example.cinepro.movieList.data.remote.MovieApi
+import com.example.cinepro.movieList.domain.manager.LocalUserManager
+import com.example.cinepro.movieList.domain.usecases.AppEntryUseCases
+import com.example.cinepro.movieList.domain.usecases.ReadAppEntry
+import com.example.cinepro.movieList.domain.usecases.SaveAppEntry
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,6 +30,21 @@ object AppModule {
     private val client: OkHttpClient= OkHttpClient.Builder()
         .addInterceptor(interceptor)
         .build()
+
+    @Provides
+    @Singleton
+    fun provideLocalUserManager(
+        application: Application
+    ): LocalUserManager = LocalUserManagerImpl(application)
+
+    @Provides
+    @Singleton
+    fun provideAppEntryUseCases(
+        localUserManager: LocalUserManager
+    )= AppEntryUseCases(
+        readAppEntry = ReadAppEntry(localUserManager),
+        saveAppEntry = SaveAppEntry(localUserManager)
+    )
 
     @Provides
     @Singleton
